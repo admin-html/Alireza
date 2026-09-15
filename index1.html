@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>علیرضا حسن‌خانی | توسعه‌دهنده Full-Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1B24;
+  --deep:#102A35;
+  --paper:#F3F6F5;
+  --card:#FFFFFF;
+  --accent:#12897A;
+  --accent-lite:#6FD6C2;
+  --soft:#E2F1ED;
+  --muted:#5E7079;
+  --line:#DCE5E3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',system-ui,Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.95;font-size:16px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+
+/* ---------- نوار بالا ---------- */
+nav{position:sticky;top:0;z-index:30;background:rgba(13,27,36,.94);backdrop-filter:blur(8px)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+nav .name{color:#fff;font-weight:700;font-size:17px}
+nav .links{display:flex;gap:22px}
+nav .links a{color:#B7CBC9;font-size:14.5px;font-weight:500}
+nav .links a:hover{color:var(--accent-lite)}
+@media(max-width:700px){nav .links{display:none}}
+
+/* ---------- هیرو ---------- */
+.hero{
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(18,137,122,.45), transparent 60%),
+    linear-gradient(180deg,var(--ink),var(--deep));
+  color:#E9F2F0;padding:70px 0 78px;border-bottom:6px solid var(--accent);
+}
+.hero .inner{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center}
+@media(max-width:760px){.hero .inner{grid-template-columns:1fr;text-align:center;gap:26px}}
+
+/* 📷 جای عکس پروفایل */
+.avatar{
+  width:200px;height:200px;border-radius:26px;overflow:hidden;
+  border:3px solid rgba(111,214,194,.5);background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  color:#9FBDB8;font-size:14px;text-align:center;line-height:1.6;margin:0 auto;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+.hero h1{font-size:clamp(30px,5.2vw,52px);font-weight:900;line-height:1.3;letter-spacing:-.6px}
+.hero .role{color:var(--accent-lite);font-size:clamp(16px,2.4vw,21px);font-weight:500;margin-top:8px}
+.hero p{margin-top:18px;max-width:60ch;color:#BFD2D0;font-weight:300}
+@media(max-width:760px){.hero p{margin-inline:auto}}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+@media(max-width:760px){.cta{justify-content:center}}
+.btn{padding:11px 22px;border-radius:10px;font-weight:600;font-size:15px}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:#0E6F63}
+.btn.ghost{border:1px solid rgba(255,255,255,.3);color:#DCE9E7}
+.btn.ghost:hover{border-color:var(--accent-lite);color:var(--accent-lite)}
+
+/* ---------- آمار ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--card);
+  border:1px solid var(--line);border-radius:16px;margin-top:-34px;position:relative;z-index:5;overflow:hidden}
+.stats div{padding:20px 14px;text-align:center;border-left:1px solid var(--line)}
+.stats div:last-child{border-left:none}
+.stats b{display:block;font-size:26px;font-weight:900;color:var(--accent)}
+.stats span{font-size:13.5px;color:var(--muted)}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}
+  .stats div:nth-child(2n){border-left:none}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* ---------- بخش‌ها ---------- */
+section.block{padding:54px 0 10px}
+h2{font-size:24px;font-weight:900;margin-bottom:6px}
+.sub{color:var(--muted);font-size:14.5px;margin-bottom:26px;font-weight:300}
+.rule{width:52px;height:4px;background:var(--accent);border-radius:4px;margin-bottom:14px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:18px}
+.card h3{font-size:20px;font-weight:700}
+.card .meta{font-size:13.5px;color:var(--muted);margin:4px 0 12px}
+.card p{font-weight:300;color:#2C3E46}
+.card ul{margin:10px 22px 0 0;font-weight:300;color:#2C3E46}
+.card li{margin-bottom:5px}
+.badge{display:inline-block;background:var(--soft);color:#0B5E52;font-size:12.5px;font-weight:600;padding:4px 12px;border-radius:7px;margin-bottom:10px}
+.link{display:inline-block;margin:12px 16px 0 0;font-size:14px;font-weight:600;color:var(--accent);border-bottom:1px dashed var(--accent);padding-bottom:2px;word-break:break-all}
+
+/* ---------- نمونه‌کار با تصویر ---------- */
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.projects{grid-template-columns:1fr}}
+.project{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+/* 🖼 جای تصویر نمونه‌کار */
+.shot{
+  aspect-ratio:16/9;background:#EDF3F1;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:#8AA3A0;font-size:13.5px;text-align:center;padding:10px
+}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.project .body{padding:20px 22px 24px}
+
+/* ---------- مهارت ---------- */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.cols{grid-template-columns:1fr}}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;list-style:none}
+.skills li{background:var(--soft);color:#0B5E52;padding:6px 13px;border-radius:8px;font-size:14px;font-weight:500}
+h4{font-size:14px;font-weight:700;color:var(--muted);margin:16px 0 2px}
+h4:first-child{margin-top:0}
+
+/* ---------- تماس ---------- */
+.contact-box{background:var(--ink);color:#E4EFED;border-radius:18px;padding:34px 30px;margin:20px 0 60px;text-align:center}
+.contact-box h2{color:#fff}
+.contact-box .sub{color:#A9C0BD}
+.contact-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.contact-list a,.contact-list span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:9px 17px;border-radius:999px;font-size:14.5px}
+.contact-list a:hover{background:var(--accent);border-color:var(--accent)}
+footer{text-align:center;color:var(--muted);font-size:13px;padding-bottom:36px}
+
+@media print{
+  nav,.cta{display:none}
+  body{background:#fff}
+  .hero{background:#fff;color:#000;border-bottom:3px solid #000}
+  .hero .role{color:#333}.hero p{color:#333}
+  .card,.project{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="name">علیرضا حسن‌خانی</div>
+    <div class="links">
+      <a href="#projects">نمونه‌کارها</a>
+      <a href="#skills">مهارت‌ها</a>
+      <a href="#paper">مقاله</a>
+      <a href="#contact">تماس</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap inner">
+    <!-- 📷 عکس پروفایل: فایل عکس رو کنار همین فایل بذار و اسمش رو photo.jpg بگذار
+         یا آدرس دلخواه رو در src بنویس. اگر عکس نباشه، کادر خالی نمایش داده می‌شه. -->
+    <div class="avatar">
+      <img src="https://cdn.imgurl.ir/uploads/h37835_photo_2026-06-11_15-53-59.jpg" alt="علیرضا حسن‌خانی"
+           onerror="this.style.display='none';this.parentNode.innerHTML='📷<br>عکس پروفایل<br>photo.jpg'">
+    </div>
+
+    <div>
+      <h1>علیرضا حسن‌خانی</h1>
+      <div class="role">توسعه‌دهنده Full-Stack | سیستم‌های اختصاصی فروشگاهی و شرکتی</div>
+      <p>
+        چند سال است به‌صورت عملی در توسعه وب فعالیت می‌کنم و تمرکزم روی ساخت سیستم‌هایی است که واقعاً استفاده می‌شوند.
+        از طراحی معماری و منطق برنامه تا زیرساخت سرور، اتصال سرویس‌ها و رفع مشکلات فنی، پروژه را از ابتدا تا راه‌اندازی نهایی دنبال می‌کنم.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">دیدن نمونه‌کارها</a>
+        <a class="btn ghost" href="#contact">تماس با من</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div><b>Full-Stack</b><span>Back-End و Front-End</span></div>
+    <div><b>۴۰+</b><span>فروش محصول کارنامه‌ساز</span></div>
+    <div><b>RoboCup ۲۰۲۳</b><span>مقاله علمی با ++C</span></div>
+    <div><b>WordPress</b><span>توسعه قالب و افزونه اختصاصی</span></div>
+  </div>
+</div>
+
+<!-- ====================== نمونه‌کارها ====================== -->
+<section class="block wrap" id="projects">
+  <div class="rule"></div>
+  <h2>نمونه‌کارها</h2>
+  <div class="sub">پروژه‌هایی که از طراحی تا اجرا و راه‌اندازی درگیرشان بوده‌ام.</div>
+
+  <div class="projects">
+
+    <article class="project">
+      <div class="shot">
+        <img src="https://www.karlancer.com/api/file/x/x764/1736346948-30r7.png" alt="وبکو"
+             onerror="this.style.display='none';this.parentNode.innerHTML='🖼 تصویر پروژه<br>images/webco.jpg'">
+      </div>
+      <div class="body">
+        <span class="badge">هم‌بنیان‌گذار</span>
+        <h3>وبکو (Webco) — پلتفرم شبکه اجتماعی</h3>
+        <div class="meta">هم‌بنیان‌گذار و Full-Stack Developer</div>
+        <p>کامل‌ترین پروژه‌ای که روی آن کار کرده‌ام. علاوه بر برنامه‌نویسی، در توسعه محصول، معماری سیستم، زیرساخت و تصمیم‌گیری‌های فنی نقش داشتم.</p>
+        <ul>
+          <li>توسعه Back-End و Front-End و طراحی ساختار دیتابیس</li>
+          <li>معماری سیستم و راه‌اندازی زیرساخت سرور</li>
+          <li>تصمیم‌گیری فنی و مسیر توسعه محصول</li>
+        </ul>
+        <a class="link" href="https://klnc.ir/worksample/طراحی-ساخت-شبکه-اجتماعی-وبکو-تیزر-معرفی-اپلیکیشن-r5wn93rm64eo" target="_blank" rel="noopener">جزئیات و تیزر معرفی</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="shot">
+        <img src="http://karlancer.com/api/file/x/x764/1737489718-axWO.png" alt="کارنامه‌ساز"
+             onerror="this.style.display='none';this.parentNode.innerHTML='🖼 تصویر پروژه<br>images/karnameh.jpg'">
+      </div>
+      <div class="body">
+        <span class="badge">۴۰+ فروش</span>
+        <h3>کارنامه‌ساز — ابزار پردازش داده برای مدارس</h3>
+        <div class="meta">محصول مستقل مبتنی بر Excel</div>
+        <p>ابزاری برای اتوماسیون صدور کارنامه و پردازش داده‌های نمرات در مدارس. تا امروز بیش از ۴۰ فروش در وب‌سایت فایلمس داشته است.</p>
+        <a class="link" href="https://filemas.com/product/%D8%A7%DA%A9%D8%B3%D9%84-%DA%A9%D8%A7%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D8%B3%D8%A7%D8%B2/" target="_blank" rel="noopener">صفحه محصول در فایلمس</a>
+      </div>
+    </article>
+
+     <article class="project">
+      <div class="shot">
+        <img src="https://www.karlancer.com/api/file/x/x764/1728236048-Yd6A.png" alt="طراحی وبسایت دانلود بازی و برنامه"
+             onerror="this.style.display='none';this.parentNode.innerHTML='🖼 تصویر پروژه'">
+      </div>
+      <div class="body">
+        <span class="badge">ریسپانسیو</span>
+        <span class="badge">طراح و مدیر پروژه</span>
+        <h3>طراحی وبسایت دانلود بازی و برنامه</h3>
+        <div class="meta"></div>
+        <p>همانطور که مشاهده می کنید سایت emaroid.ir توسط بنده طراحی و ساخته شده سئو 96 درصدی ، سرعت بالا و 100% ریسپانسیو است ! همچنین این قالب دارای ایمپورتر گوگل پلی است ، باکس دانلود حرفه ای ! داشتن بخش جدایی نیز به عنوان وبلاگ ! بخش فروشگاه آن حاوی فروش cp ، جم و ... باقی موارد که شما تعیین می کنید !
+تا حدودی سعی کردم این وبسایت شبیه وبسایت مشابه این وبسایت که یک وبسایت روسی هست بشود و تقریبا موفق بودم
+البته مدتی هست که این وبسایت دیگر فعالیت نمیکند و دامنه غیر فعال است ...</p>
+      
+        <a class="link" href="klnc.ir/l/jlm8r8px" target="_blank" rel="noopener">مشاهده در کارلنسر</a>
+      </div>
+    </article>
+
+
+  </div>
+
+  <div style="margin-top:8px">
+    <a class="link" href="https://karlancer.com/profile/172806" target="_blank" rel="noopener">نمونه‌کارهای بیشتر در پروفایل کارلنسر</a>
+  </div>
+</section>
+
+<!-- ====================== تجربه ====================== -->
+<section class="block wrap">
+  <div class="rule"></div>
+  <h2>تجربه فنی</h2>
+  <div class="sub">حوزه‌هایی که به‌صورت عملی رویشان کار کرده‌ام.</div>
+
+  <div class="cols">
+    <div class="card">
+      <h3>وردپرس و ووکامرس</h3>
+      <p>کارم در این حوزه به استفاده از قالب و افزونه آماده محدود نمی‌شود:</p>
+      <ul>
+        <li>توسعه و شخصی‌سازی قالب و افزونه اختصاصی</li>
+        <li>پیاده‌سازی قابلیت‌های سفارشی روی ووکامرس</li>
+        <li>راست‌چین‌سازی و فارسی‌سازی کامل</li>
+        <li>کار با API و اتصال وردپرس به سرویس‌های بیرونی</li>
+        <li>رفع تداخل افزونه‌ها و سازگاری نسخه‌های PHP</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>زیرساخت، سرور و اتوماسیون</h3>
+      <ul>
+        <li>Linux، هاستینگ، FTP، مدیریت سرور و شبکه</li>
+        <li>دنبال کردن پروژه از پیاده‌سازی تا عیب‌یابی و راه‌اندازی</li>
+        <li>توسعه ربات تلگرام و اتصال آن به وردپرس و ووکامرس</li>
+        <li>یکپارچه‌سازی چند سرویس در یک سیستم واحد</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== مهارت‌ها ====================== -->
+<section class="block wrap" id="skills">
+  <div class="rule"></div>
+  <h2>مهارت‌ها</h2>
+  <div class="sub">ابزارهایی که هر روز با آن‌ها کار می‌کنم.</div>
+
+  <div class="cols">
+    <div class="card">
+      <h4>زبان‌های برنامه‌نویسی</h4>
+      <ul class="skills"><li>++C</li><li>PHP</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
+      <h4>دیتابیس</h4>
+      <ul class="skills"><li>MySQL</li><li>MariaDB</li></ul>
+    </div>
+    <div class="card">
+      <h4>پلتفرم و ابزار</h4>
+      <ul class="skills"><li>WordPress</li><li>WooCommerce</li><li>Telegram Bot API</li><li>REST API</li><li>Excel</li></ul>
+      <h4>سرور و زیرساخت</h4>
+      <ul class="skills"><li>Linux</li><li>Hosting</li><li>FTP</li><li>Networking</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== مقاله ====================== -->
+<section class="block wrap" id="paper">
+  <div class="rule"></div>
+  <h2>مقاله علمی</h2>
+  <div class="sub">نمایه‌شده در Google Scholar.</div>
+
+  <div class="card">
+    <h3>Robo2D Soccer Simulation — Team Description Paper</h3>
+    <div class="meta">RoboCup 2023 · Soccer Simulation 2D · RSQ LC Institute, Tehran</div>
+    <p>
+      مقاله‌ای درباره الگوریتم‌های تیم شبیه‌سازی فوتبال دوبعدی Robo2D: استراتژی پاس و Through Pass با دیاگرام ورونوی،
+      سه نوع دریبل، الگوریتم Mark و Block، تصمیم‌گیری هوشمند و مدیریت استقامت بازیکن‌ها. پیاده‌سازی کامل با ++C.
+    </p>
+    <a class="link" href="https://tdp.robocup.org/wp-content/uploads/tdp/robocup/2023/robocupsoccer-simulation-2d/robo2d-428/robocup-2023-robocupsoccer-simulation-2d-robo2d8dOHrvbIUD.pdf" target="_blank" rel="noopener">دانلود PDF مقاله</a>
+    <a class="link" href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=robo2d+team" target="_blank" rel="noopener">صفحه Google Scholar</a>
+  </div>
+</section>
+
+<!-- ====================== تماس ====================== -->
+<div class="wrap" id="contact">
+  <div class="contact-box">
+    <h2>برای همکاری در تماس باشید</h2>
+    <div class="sub">پروژه‌های توسعه وب، فروشگاه اینترنتی و سیستم‌های اختصاصی و موارد مرتبط با مهارت های ذکر شده را می‌پذیرم.</div>
+    <div class="contact-list">
+      
+      <a href="mailto:alirezahasankhani86@gmail.com">alirezahasankhani86@gmail.com</a>
+      <a href="tel:+989372441471" target="_blank" rel="noopener">شماره تلفن:‌ ۰۹۳۷۲۴۴۱۴۷۱</a>
+      <a href="https://t.me/ShadowWolf_SW" target="_blank" rel="noopener">تلگرام</a>
+      <a href="https://karlancer.com/profile/172806" target="_blank" rel="noopener">کارلنسر</a>
+      
+    </div>
+  </div>
+</div>
+
+<footer>برای خروجی PDF: در مرورگر Ctrl+P بزنید و مقصد را «Save as PDF» انتخاب کنید.</footer>
+
+</body>
+</html>
